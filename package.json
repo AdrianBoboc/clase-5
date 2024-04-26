@@ -26,5 +26,8 @@
   },
   "eslintConfig": {
     "extends": "standard"
+  },
+  "engines": {
+    "node": ">=14"
   }
 }
