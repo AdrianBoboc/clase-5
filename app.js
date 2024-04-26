@@ -1,7 +1,9 @@
 import express, { json } from 'express' // require -> commonJS
 import { createMovieRouter } from './routes/movies.js'
 import { corsMiddleware } from './middlewares/cors.js'
-import 'dotenv/config'
+import { config } from 'dotenv'
+
+config()
 
 // después
 export const createApp = ({ movieModel }) => {

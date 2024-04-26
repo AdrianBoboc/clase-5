@@ -1,5 +1,6 @@
 import mysql from 'mysql2/promise'
-
+import pg, { Pool } from 'pg'
+/*
 const DEFAULT_CONFIG = {
   host: 'localhost',
   user: 'root',
@@ -7,10 +8,14 @@ const DEFAULT_CONFIG = {
   password: 'sasa',
   database: 'moviesdb'
 }
+
 const connectionString = process.env.DATABASE_URL ?? DEFAULT_CONFIG
 
-const connection = await mysql.createConnection(connectionString)
+const connection = await mysql.createConnection(connectionString) */
 
+const connection = pg.Pool({
+  connectionstring: process.env.DATABASE_URL
+})
 export class MovieModel {
   static async getAll ({ genre }) {
     console.log('getAll')
