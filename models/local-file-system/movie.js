@@ -1,5 +1,5 @@
+import { randomUUID } from 'node:crypto'
 import { readJSON } from '../../utils.js'
-import { randomUUID } from 'crypto'
 
 const movies = readJSON('./movies.json')
 
@@ -10,6 +10,7 @@ export class MovieModel {
         movie => movie.genre.some(g => g.toLowerCase() === genre.toLowerCase())
       )
     }
+
     return movies
   }
 
@@ -18,11 +19,12 @@ export class MovieModel {
     return movie
   }
 
-  static async create (input) {
+  static async create ({ input }) {
     const newMovie = {
       id: randomUUID(),
       ...input
     }
+
     movies.push(newMovie)
 
     return newMovie
@@ -44,6 +46,7 @@ export class MovieModel {
       ...movies[movieIndex],
       ...input
     }
+
     return movies[movieIndex]
   }
 }
